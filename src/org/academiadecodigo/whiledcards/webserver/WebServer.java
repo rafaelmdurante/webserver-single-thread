@@ -63,6 +63,14 @@ public class WebServer {
      */
 
     // Methods
-
+    public void listen(ServerSocket serverSocket) {
+        try {
+            serverSocket = new ServerSocket();
+            serve(serverSocket);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
 
 }
