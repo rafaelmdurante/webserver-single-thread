@@ -1,6 +1,9 @@
 package org.academiadecodigo.whiledcards.webserver;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -23,6 +26,7 @@ public class WebServer {
 
     /**
      * method to establish connection and dispatch, it creates a clientSocket from server request acceptance
+     *
      * @param serverSocket
      */
     void serve(ServerSocket serverSocket) {
@@ -66,6 +70,7 @@ public class WebServer {
 
     /**
      * Method to listen to the selected port, wait for requests from the client
+     *
      * @param port
      */
     public void listen(int port) {
@@ -81,5 +86,36 @@ public class WebServer {
         }
 
     }
+
+    public void dispatch(Socket clientSocket) {
+        //TODO
+        try {
+            BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            DataOutputStream output = new DataOutputStream(clientSocket.getOutputStream());
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method that returns the first line of the http request
+     *
+     * @param in
+     * @return
+     */
+    private String receiveHeader(BufferedReader in) {
+
+        String line = null;
+        try {
+            line = in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return line;
+
+    }
+
 
 }
