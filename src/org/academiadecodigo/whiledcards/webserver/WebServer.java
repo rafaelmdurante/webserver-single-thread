@@ -63,14 +63,23 @@ public class WebServer {
      */
 
     // Methods
-    public void listen(ServerSocket serverSocket) {
+
+    /**
+     * Method to listen to the selected port, wait for requests from the client
+     * @param port
+     */
+    public void listen(int port) {
+
         try {
-            serverSocket = new ServerSocket();
+
+            serverSocket = new ServerSocket(port);
             serve(serverSocket);
+
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
         }
+
     }
 
 }
