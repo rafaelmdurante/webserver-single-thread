@@ -93,6 +93,21 @@ public class WebServer {
             BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             DataOutputStream output = new DataOutputStream(clientSocket.getOutputStream());
 
+            String httpFirstLine = receiveHeader(input);
+            String httpVerb = httpFirstLine.split(" ")[0];
+            String httpResource = httpFirstLine.split(" ")[1];
+
+            if (!httpVerb.equals("GET")) {
+                //TODO something
+
+
+            }
+            if (httpResource == null) {
+            //TODO something
+
+            }
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -108,6 +123,7 @@ public class WebServer {
     private String receiveHeader(BufferedReader in) {
 
         String line = null;
+
         try {
             line = in.readLine();
         } catch (IOException e) {
