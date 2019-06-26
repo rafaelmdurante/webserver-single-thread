@@ -2,31 +2,42 @@ package org.academiadecodigo.whiledcards.webserver;
 
 public class HttpHelper {
 
-    public static boolean isImage(String file) {
+    //Header First Line
+    public static String badRequest() {
 
-        switch (getExtension(file)) {
+        return "HTTP/1.0 400 Bad Request\r\n";
 
-            case "jpg":
-            case "png":
-            case "ico":
-            case "gif":
-            case "bmp":
-                return true;
 
-            default:
-               return false;
-        }
     }
 
-    public static boolean isHtml(String file) {
-        return getExtension(file).equals("html");
+    public static String notAllowed() {
+
+        return "HTTP/1.0 405 Not Allowed\r\n" + "Allow: GET\r\n";
+
     }
 
-    public static boolean isSupported (String file) {
-        return isHtml(file) || isImage(file);
+    public static String unsupportedMediaType() {
+
+        return "HTTP/1.0 415 Unsupported Media Type\r\n";
+
     }
 
-    public static String getExtension(String file) {
-        return file.substring(file.lastIndexOf("." + 1));
+    public static String ok() {
+
+        return "HTTP/1.0 200 Document Follow\r\n";
+
     }
+
+    //Header Second Line
+
+    public static String contentType(String fileExtension) {
+
+        if (fileExtension.equals(""))
+
+            return
+
+
+    }
+
+
 }
