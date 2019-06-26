@@ -11,8 +11,15 @@ public class WebServer {
 
     // Main
     public static void main(String[] args) {
+        //if it doesnt receive any argument, the port will be the default;
+        int port = args.length > 0 ? Integer.parseInt(args[0]) : DEFAULT_PORT;
 
+        WebServer webServer = new WebServer();
+
+        webServer.listen(port);
     }
+
+
 
     // Flow
     /*
