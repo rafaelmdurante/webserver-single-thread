@@ -101,10 +101,15 @@ public class WebServer {
                 //TODO something
 
 
+                close(clientSocket);
+                return;
             }
+
             if (httpResource == null) {
             //TODO something
 
+                close(clientSocket);
+                return;
             }
 
 
@@ -113,6 +118,17 @@ public class WebServer {
             e.printStackTrace();
         }
     }
+
+
+    public void close(Socket clientSocket){
+
+        try {
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Method that returns the first line of the http request
