@@ -1,9 +1,13 @@
 package org.academiadecodigo.whiledcards.webserver;
 
+import java.net.ServerSocket;
+
 public class WebServer {
 
     // Attributes
-    
+    private static final int DEFAULT_PORT = 8082;
+    private static final String DOCUMENT_ROOT = "www/";
+    private ServerSocket serverSocket;
 
     // Main
     public static void main(String[] args) {
