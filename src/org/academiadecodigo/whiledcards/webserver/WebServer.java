@@ -1,6 +1,8 @@
 package org.academiadecodigo.whiledcards.webserver;
 
+import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class WebServer {
 
@@ -19,6 +21,25 @@ public class WebServer {
         webServer.listen(port);
     }
 
+    /**
+     * method to establish connection and dispatch, it creates a clientSocket from server request acceptance
+     * @param serverSocket
+     */
+    void serve(ServerSocket serverSocket) {
+
+        while (true) {
+            try {
+                Socket clientSocket = serverSocket.accept();
+
+                dispatch(clientSocket);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
 
 
     // Flow
