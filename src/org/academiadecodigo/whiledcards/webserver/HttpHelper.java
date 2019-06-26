@@ -11,7 +11,6 @@ public class HttpHelper {
             case "ico":
             case "gif":
             case "bmp":
-            case "svg":
                 return true;
 
             default:

@@ -1,9 +1,6 @@
 package org.academiadecodigo.whiledcards.webserver;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -73,7 +70,7 @@ public class WebServer {
      *
      * @param port
      */
-    public void listen(int port) {
+    private void listen(int port) {
 
         try {
 
@@ -87,18 +84,24 @@ public class WebServer {
 
     }
 
-    public void dispatch(Socket clientSocket) {
+    private void dispatch(Socket clientSocket) {
         //TODO
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             DataOutputStream output = new DataOutputStream(clientSocket.getOutputStream());
 
             String httpFirstLine = receiveHeader(input);
+
+            if (httpFirstLine == null) {
+                close(clientSocket);
+                return;
+            }
+
             String httpVerb = httpFirstLine.split(" ")[0];
-            String httpResource = httpFirstLine.split(" ")[1];
+            String httpResource = httpFirstLine.split(" ")[1];//path
 
             if (!httpVerb.equals("GET")) {
-                //TODO something
+                //TODO send badrequest response
 
 
                 close(clientSocket);
@@ -106,21 +109,52 @@ public class WebServer {
             }
 
             if (httpResource == null) {
-            //TODO something
+                //TODO something
 
                 close(clientSocket);
                 return;
             }
 
 
+            //TODO send header request
+
+
+            //TODO send content
+            streamFile(output,);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    //What does this method do? i though it was doing what the streamFile does
+    private void reply(DataOutputStream output, String response) throws IOException {
+        output.writeBytes(response);
+    }
 
 
-    public void close(Socket clientSocket){
+
+    /**
+     * file content to byte and send it via the data output stream
+     * @param out
+     * @param file
+     * @throws IOException
+     */
+    private void streamFile(DataOutputStream out, File file) throws IOException {
+
+        byte[] buffer = new byte[1024];
+        FileInputStream in = new FileInputStream(file);
+
+        int numBytes;
+        while ((numBytes = in.read(buffer)) != -1) {
+            out.write(buffer, 0, numBytes);
+        }
+
+        in.close();
+
+    }
+
+
+    private void close(Socket clientSocket) {
 
         try {
             clientSocket.close();
