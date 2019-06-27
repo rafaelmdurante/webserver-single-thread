@@ -1,0 +1,25 @@
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Libre+Baskerville:400,700');
+$font-title: 'Libre Baskerville', serif;
+$font-body: 'Lato', sans-serif;
+
+/* ===== COLORS ===== */
+$color-primary: #D3E1C6;
+$color-primary-dark: #849374;
+$color-secondary: #F1E3D7;
+$color-secondary-dark: #DBBA9C;
+$color-brightest: #FFFFFF;
+$color-darkest: #575756;
+
+/* ===== IMAGES ===== */
+// Pineapple
+$index-bg-img-1x: url('../assets/pineapple@1x.jpg');
+$index-bg-img-2x: url('../assets/pineapple@2x.jpg');
+$atuacao-bg-img-1x: url('../assets/fruits@1x.jpg');
+$atuacao-bg-img-2x: url('../assets/fruits@2x.jpg');
+$contato-bg-img-1x: url('../assets/contact@1x.jpg');
+$contato-bg-img-2x: url('../assets/contact@2x.jpg');
+
+/* ===== UTILITIES ===== */
+// Shadows
+$btn-shadow: 1px 1px 5px $color-primary-dark;

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Rafael Miranda Durante">
+    <title>Nutricionista Fernanda Borges</title>
+    <link rel="shortcut icon" href="./assets/favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- HEADER ========== -->
+    <div class="header-container">
+        <header class="header">
+            <!-- Logo -->
+            <div class="header-brand">
+                <div class="header-icon"><a href="index.html" class="header-invisible-home-link"></a></div>
+            </div>
+            <!-- Navbar -->
+            <nav class="navbar">
+                <ul class="navbar-list">
+                    <li class="navbar-item active"><a href="a-nutricionista.html">A Nutricionista</a></li>
+                    <li class="navbar-item"><a href="area-de-atuacao.html">Área de Atuação</a></li>
+                    <li class="navbar-item"><a href="http://www.fernutricionista.com.br/blog" target="_blank">Blog</a></li>
+                    <li class="navbar-item"><a href="contato.html">Contato</a></li>
+                    <li class="navbar-item" id="area-pacientes"><a href="https://dietbox.me/pt-BR/Paciente/Account/Login"
+                            target="_blank">Área dos Pacientes</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile Menu Toggle -->
+            <div class="navbar-toggle"><i class="fas fa-bars" id="toggle-button" onclick="toggleMenu()"></i></div>
+        </header>
+    </div>
+    <!-- MAIN CONTENT ========== -->
+    <main class="main">
+        <!-- Section #1 -->
+        <section class="container" id="a-nutri-banner">
+            <picture id="a-nutri-img">
+                <source media="(max-width: 799px)" srcset="./assets/fer-adip@1x.jpg">
+                <source media="(min-width: 800px)" srcset="./assets/fer-adip@2x.jpg">
+                <img src="./assets/fer-adip@1x.jpg" alt="Foto Fernanda Borges Nutricionista com Adipômetro" class="photo">
+            </picture>
+            <div class='content-wrap' id='a-nutri-banner-text'>
+                <h1>Prezo pela individualidade</h1>
+                <p>Olá, sou a Fernanda Borges, uma nutricionista apaixonada pelo que faz.</p>
+                <p>Sempre soube que o meu principal objetivo como profissional seria ajudar as pessoas a terem uma relação diferente com a comida, de forma simples e descomplicada, através da conscientização sobre a sua alimentação e o seu corpo.</p>
+                <p>Não trabalho com protocolos específicos, prezo pela individualidade de cada paciente.  Busco adequar o melhor tratamento de acordo com o perfil e as necessidades individuais para atingir seus objetivos e/ou melhorar sua performance.</p>
+            </div>
+        </section>
+        <!-- Section #2 -->
+        <section id="a-nutri-formacao">
+            <div class="content-wrap">
+                <p>Tenho experiência também como docente, atuei nos cursos de Nutrição, Ciências do Esporte e Estética, nas disciplinas de Biologia Molecular e Celular, Bioquímica e Nutrição e Dietética. Por 5 anos me dediquei à pesquisa em obesidade e metabolismo.</p>
+                <h2>Formação</h2>
+                <ul class="formacao-list">
+                    <li>Graduação em Nutrição (UNICAMP)</li>
+                    <li>Mestre em Ciências da Nutrição e do Esporte e Metabolismo (UNICAMP)</li>
+                    <li>Pós-graduanda em Bioquímica, Fisiologia, Treinamento e Nutrição Desportiva (UNICAMP)</li>
+                    <li>Pós-graduanda em Atendimento Interdisciplinar Preventivo na Primeira Infância (UNICAMP)</li>
+                </ul>
+                <div id="linkedin-box">
+                    <p>Conheça minha trajetória profissional no <span style="font-weight: bold;"><a href="https://www.linkedin.com/in/fernanda-borges-5a976a132/" target="_blank">LinkedIn</a></span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-grid-social">
+                <ul class="social-links">
+                    <li><div class="social-link-container"><a href="https://wa.me/5519998500222?text=Oi%20Fer%21%20Tudo%20bem%3f%20Vi%20seu%20site%20e%20gostaria%20de%20saber%20mais%20a%20respeito%20do%20atendimento.%20Obrigado! =)" target="_blank" class="social-link-item"><i class="fab fa-whatsapp"></i><span class="sr-only">WhatsApp</span></a></div></li>
+                    <li><div class="social-link-container"><a href="https://www.facebook.com/fernutricionista1/" target="_blank" class="social-link-item"><i class="fab fa-facebook-square"></i><span class="sr-only">Facebook</span></a></div></li>
+                    <li><div class="social-link-container"><a href="http://instagram.com/_u/fernutricionista_/" target="_blank" class="social-link-item"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a></div></li>
+                    <li><div class="social-link-container"><a href="https://www.linkedin.com/in/fernanda-borges-5a976a132/" target="_blank" class="social-link-item"><i class="fab fa-linkedin"></i><span class="sr-only">LinkedIn</span></a></div></li>
+                </ul>
+            </div>
+            <div class="footer-grid-address">
+                <address class="address">
+                    <p>Tel: +55 (19) 9 9850.0222</p>
+                    <a href="mailto:contato@fernutricionista.com.br?subject=Contato via Site">contato@fernutricionista.com.br</a>
+                    <p><a href="https://goo.gl/maps/zZxoRKZaW592" target="_blank">Rua Benedito Kuhl, 780 - Limeira/SP</a></p>
+                </address>
+            </div>
+            <div class="footer-grid-subscribe">
+                <p>Para novidades, receitas e artigos</p>
+                <a href="http://eepurl.com/glu5vL" target="_blank" class="btn btn-link">Fique por Dentro!</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+</body>
+</html>

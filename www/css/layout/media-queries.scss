@@ -1,0 +1,138 @@
+@media (min-width: 800px) {
+    .hero-bg-img-index {
+        background:$index-bg-img-2x;
+        @include hero-bg-img;
+    }
+
+    .navbar {
+        background-color: $color-brightest;
+        opacity: 1;
+        visibility: visible;
+        flex-grow: 2;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .navbar-list {
+        top: 0;
+        height: 100%;
+        position: relative;
+        flex-flow: row;
+        /* OLD
+        display: flex;
+        justify-content: center;
+        max-height: 500px;
+        background-color: $color-brightest; */
+    }
+
+    .navbar-item {
+        // height: 100%;
+        font-size: 0.8rem;
+        padding: 1rem 2rem;
+        flex-grow: 3;
+        transition: all 0.1s ease-in-out;
+        &:hover {
+            background-color: $color-primary;
+        }
+    }
+
+    .navbar-toggle {
+        visibility: hidden;
+    }
+
+    .main-content {
+        padding: 2rem 4rem;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .footer-grid {
+        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 'social address subscribe'
+    }
+
+    .social-links {
+        flex-wrap: nowrap;
+    }
+
+    #indexPicOffice {
+        order: 0;
+    }
+
+    #indexTextRight {
+        order: 1;
+    }
+
+    #indexBannerRight {
+        order: 2;
+    }
+
+    #indexMissao {
+        padding-top: 2rem;
+    }
+
+    //A Nutricionista
+    #a-nutri-banner {
+        display: flex;
+        padding: 2rem 5rem;
+        background-color: $color-primary;
+        align-items: center;
+    }
+        #a-nutri-img {
+            order: 2;
+            flex-shrink: 2.8;
+            // transform: rotate(15deg) scale(0.85, 0.85);
+        }
+        #a-nutri-banner-text {
+            order: 1;
+            flex-shrink: 2;
+            text-align: left;
+        }
+    #a-nutri-formacao {
+        display: flex;
+        padding: 2rem 5rem;
+        border-top: 10px solid $color-primary-dark;
+        text-align: left;
+    }
+
+    //Area de Atuação
+    .hero-bg-img-atuacao {
+        background:$atuacao-bg-img-2x;
+        @include hero-bg-img;
+    }
+
+    #area-atuacao {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .lists-two-columns {
+        display: flex;
+        justify-content: center;
+    }
+
+    .list-left {
+        margin-right: 2rem;
+        ul {
+            text-align: left;
+        }
+    }
+
+    .list-right {
+        margin-left: 2rem;
+        ul {
+            text-align: left;
+        }
+    }
+
+    //Contato
+    .hero-bg-img-contato {
+        background:$contato-bg-img-2x;
+        @include hero-bg-img;
+    }
+
+}

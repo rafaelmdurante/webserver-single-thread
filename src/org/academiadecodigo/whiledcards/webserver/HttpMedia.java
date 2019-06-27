@@ -36,6 +36,6 @@ public class HttpMedia {
     }
 
     public static String getExtension(String file) {
-        return file.substring(file.lastIndexOf("." + 1));
+        return file.substring(file.lastIndexOf(".") + 1);
     }
 }

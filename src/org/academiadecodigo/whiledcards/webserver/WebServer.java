@@ -3,6 +3,8 @@ package org.academiadecodigo.whiledcards.webserver;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class WebServer {
 
@@ -98,48 +100,53 @@ public class WebServer {
             }
 
             String httpVerb = httpFirstLine.split(" ")[0];
-            String httpResource = httpFirstLine.split(" ")[1];//path
+            String httpResource = httpFirstLine.split(" ")[1];
 
             if (!httpVerb.equals("GET")) {
-                //TODO something to return the first line of the http response -- not allowed
-
-
+                reply(output, HttpHelper.notAllowed());
                 close(clientSocket);
-                return;
+                return;//get out from dispatch method
             }
 
             if (httpResource == null) {
-                //TODO something to return the first line of the http response -- badrequest
-
+                reply(output, HttpHelper.badRequest());
                 close(clientSocket);
-                return;
+                return;//get out from dispatch method
             }
 
-            //String filepath=getResourcePath(httpResource);
-            //we did not inplement the method that uses Patcher and Matcher(dunno what it does)
+            String filepath = getResourcePath(httpResource);
 
-            if (!HttpMedia.isSupported(DOCUMENT_ROOT + httpResource)) {
-                reply(output, HttpHelper.unsupportedMediaType());
+            if (!HttpMedia.isSupported(filepath)) {
+                reply(output, HttpHelper.unsupportedMediaType()); //reply the header with unsuported media type
+                close(clientSocket);
+                return; //get out from dispatch method
             }
 
+
+            File file = new File(filepath);
             //TODO send header request
+            reply(output, filepath);
 
 
-            //TODO send content
-            streamFile(output, );
+            streamFile(output, file); // send content
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    //TODO this method returns a string that if the client does not explicit writes "index.html" it will forward
-    // it to the index page
+
+    //TODO @rafa could you describe this method please?
     private String getResourcePath(String httpResource) {
+        String path = httpResource;
 
+        Pattern pattern = Pattern.compile("(\\.[^.]+)$"); // regex for file extension
+        Matcher matcher = pattern.matcher(path);
 
+        if (!matcher.find()) path += "/index.html";
 
+        path=DOCUMENT_ROOT+path;
+        return path;
 
-        return "";
     }
 
     /**
