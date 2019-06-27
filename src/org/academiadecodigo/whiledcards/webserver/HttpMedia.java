@@ -23,8 +23,16 @@ public class HttpMedia {
         return getExtension(file).equals("html");
     }
 
+    public static boolean isCss(String file) {
+        return getExtension(file).equals("css");
+    }
+
+    public static boolean isJavaScript(String file) {
+        return getExtension(file).equals("js");
+    }
+
     public static boolean isSupported (String file) {
-        return isHtml(file) || isImage(file);
+        return isHtml(file) || isImage(file) || isCss(file) || isJavaScript(file);
     }
 
     public static String getExtension(String file) {
