@@ -101,7 +101,7 @@ public class WebServer {
             String httpResource = httpFirstLine.split(" ")[1];//path
 
             if (!httpVerb.equals("GET")) {
-                //TODO send badrequest response
+                //TODO something to return the first line of the http response -- not allowed
 
 
                 close(clientSocket);
@@ -109,32 +109,53 @@ public class WebServer {
             }
 
             if (httpResource == null) {
-                //TODO something
+                //TODO something to return the first line of the http response -- badrequest
 
                 close(clientSocket);
                 return;
             }
 
+            //String filepath=getResourcePath(httpResource);
+            //we did not inplement the method that uses Patcher and Matcher(dunno what it does)
+
+            if (!HttpMedia.isSupported(DOCUMENT_ROOT + httpResource)) {
+                reply(output, HttpHelper.unsupportedMediaType());
+            }
 
             //TODO send header request
 
 
             //TODO send content
-            streamFile(output,);
+            streamFile(output, );
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    //What does this method do? i though it was doing what the streamFile does
+    //TODO this method returns a string that if the client does not explicit writes "index.html" it will forward
+    // it to the index page
+    private String getResourcePath(String httpResource) {
+
+
+
+
+        return "";
+    }
+
+    /**
+     * @param output
+     * @param response
+     * @throws IOException
+     */
+    //TODO pass with the group
     private void reply(DataOutputStream output, String response) throws IOException {
         output.writeBytes(response);
     }
 
 
-
     /**
      * file content to byte and send it via the data output stream
+     *
      * @param out
      * @param file
      * @throws IOException
@@ -144,6 +165,7 @@ public class WebServer {
         byte[] buffer = new byte[1024];
         FileInputStream in = new FileInputStream(file);
 
+        //writes to the data output stream the buffered information
         int numBytes;
         while ((numBytes = in.read(buffer)) != -1) {
             out.write(buffer, 0, numBytes);
