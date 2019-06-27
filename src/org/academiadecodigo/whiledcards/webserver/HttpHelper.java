@@ -57,7 +57,7 @@ public class HttpHelper {
      */
     public static String ok() {
 
-        return "HTTP/1.0 200 Document Follow\r\n";
+        return "HTTP/1.0 200 Document Follows\r\n";
 
     }
 
@@ -65,7 +65,7 @@ public class HttpHelper {
     /**
      * Method to return the second line of the header. Parameter fileExtension must be passed as string without anything but the extension itself.
      * E.g: "jpg", "html", "svg" etc.
-     * @param fileExtension
+     * @param filePath
      * @return
      */
     public static String contentType(String filePath) {
@@ -87,6 +87,7 @@ public class HttpHelper {
             case "gif":
             case "bmp":
                 type = "image";
+                System.out.println("IMAGE!!!!!!");
                 break;
             case "jpg":
             case "jpeg":
@@ -102,13 +103,23 @@ public class HttpHelper {
                 break;
         }
 
-        // Line basic model
+        /* PESSOAL! alterei para uma string concat normal, o stringbuilder seria mais adequado
+        se por acaso estivessemos a fazer a concatenação das strings dentro de um loop,
+
+
         StringBuilder line = new StringBuilder("Content-Type: ")
                 .append(type).append("/")
                 .append(filePath)
                 .append("\r\n");
+         */
+        // Line basic model
 
-        return line.toString();
+
+        return "Content-Type: " + type + "/" + filePath + "\r\n";
+    }
+
+    public static String notFound() {
+        return "HTTP/1.0 404 Not Found\r\n";
     }
 
     // Header Third Line
