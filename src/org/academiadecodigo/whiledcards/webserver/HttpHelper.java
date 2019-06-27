@@ -68,11 +68,11 @@ public class HttpHelper {
      * @param fileExtension
      * @return
      */
-    public static String contentType(String fileExtension) {
+    public static String contentType(String filePath) {
 
         String type;
 
-        switch (fileExtension) {
+        switch (filePath) {
             // We decided to keep HTML and CSS even though it's unnecessary due to default values.
             case "html":
             case "css":
@@ -80,7 +80,7 @@ public class HttpHelper {
                 break;
             case "js":
                 type = "text";
-                fileExtension = "javascript";
+                filePath = "javascript";
                 break;
             case "png":
             case "ico":
@@ -91,11 +91,11 @@ public class HttpHelper {
             case "jpg":
             case "jpeg":
                 type = "image";
-                fileExtension = "jpeg";
+                filePath = "jpeg";
                 break;
             case "svg":
                 type = "image";
-                fileExtension = "svg+xml";
+                filePath = "svg+xml";
                 break;
             default:
                 type = "text";
@@ -105,7 +105,7 @@ public class HttpHelper {
         // Line basic model
         StringBuilder line = new StringBuilder("Content-Type: ")
                 .append(type).append("/")
-                .append(fileExtension)
+                .append(filePath)
                 .append("\r\n");
 
         return line.toString();

@@ -33,7 +33,6 @@ public class WebServer {
         while (true) {
             try {
                 Socket clientSocket = serverSocket.accept();
-
                 dispatch(clientSocket);
 
             } catch (IOException e) {
@@ -122,16 +121,22 @@ public class WebServer {
                 return; //get out from dispatch method
             }
 
-
             File file = new File(filepath);
-            //TODO send header request
-            reply(output, filepath);
+            if (file.exists() && !file.isDirectory()) {
+                reply(output, HttpHelper.ok());
+            }
+
+            reply(output, HttpHelper.contentType(HttpMedia.getExtension(filepath)));
+            reply(output, HttpHelper.contentSize(file.length()));
 
 
             streamFile(output, file); // send content
 
+            close(clientSocket);
+
         } catch (IOException e) {
             e.printStackTrace();
+            close(clientSocket);
         }
     }
 
@@ -144,7 +149,7 @@ public class WebServer {
 
         if (!matcher.find()) path += "/index.html";
 
-        path=DOCUMENT_ROOT+path;
+        path = DOCUMENT_ROOT + path;
         return path;
 
     }
@@ -168,6 +173,7 @@ public class WebServer {
      * @throws IOException
      */
     private void streamFile(DataOutputStream out, File file) throws IOException {
+
 
         byte[] buffer = new byte[1024];
         FileInputStream in = new FileInputStream(file);
