@@ -132,7 +132,7 @@ public class HttpHelper {
     // Header Third Line
     public static String contentSize(long fileLength) {
 
-        return "Content-Length: " + fileLength + "\r\n\n\r\n";
+        return "Content-Length: " + fileLength + "\r\n\r\n";
 
     }
 
