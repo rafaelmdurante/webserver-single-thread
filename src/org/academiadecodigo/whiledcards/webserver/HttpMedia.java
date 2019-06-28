@@ -15,7 +15,7 @@ public class HttpMedia {
                 return true;
 
             default:
-               return false;
+                return false;
         }
     }
 
@@ -31,7 +31,7 @@ public class HttpMedia {
         return getExtension(file).equals("js");
     }
 
-    public static boolean isSupported (String file) {
+    public static boolean isSupported(String file) {
         return isHtml(file) || isImage(file) || isCss(file) || isJavaScript(file);
     }
 

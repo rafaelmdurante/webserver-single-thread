@@ -10,6 +10,7 @@ public class WebServer {
 
     public static final int DEFAULT_PORT = 8082;
     public static final String DOCUMENT_ROOT = "www/";
+    private ServerSocket serverSocket;
 
     public static void main(String[] args) {
         try {
@@ -36,7 +37,7 @@ public class WebServer {
 
         try {
 
-            ServerSocket serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(port);
             serve(serverSocket);
 
         } catch (IOException e) {
@@ -55,7 +56,9 @@ public class WebServer {
 
         while (true) {
             try {
+                System.out.println("Waiting...");
                 Socket clientSocket = serverSocket.accept();
+                System.out.println("Connection Established.");
                 dispatch(clientSocket);
 
             } catch (IOException e) {
@@ -147,16 +150,18 @@ public class WebServer {
     //TODO @rafa could you describe this method please?
 
     private String getResourcePath(String httpResource) {
+
         String path = httpResource;
 
         Pattern pattern = Pattern.compile("(\\.[^.]+)$"); // regex for file extension
         Matcher matcher = pattern.matcher(path);
 
-        if (!matcher.find()) path += "/index.html";
+        if (!matcher.find()) {
+            path += "/index.html";
+        }
 
-        path = DOCUMENT_ROOT + path;
-        return path;
 
+        return DOCUMENT_ROOT + path;
     }
 
     /**
@@ -191,7 +196,6 @@ public class WebServer {
         in.close();
 
     }
-
 
     private void close(Socket clientSocket) {
 

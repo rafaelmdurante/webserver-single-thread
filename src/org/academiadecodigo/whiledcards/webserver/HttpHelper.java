@@ -21,8 +21,10 @@ public class HttpHelper {
      */
 
     //Header First Line
+
     /**
      * Verifies if resource is null
+     *
      * @return
      */
     public static String badRequest() {
@@ -33,6 +35,7 @@ public class HttpHelper {
 
     /**
      * Verifies if verb (GET, PUT, DELETE or POST) is allowed. For this server so far, only GET is allowed.
+     *
      * @return
      */
     public static String notAllowed() {
@@ -43,6 +46,7 @@ public class HttpHelper {
 
     /**
      * Verifies if media type is supported by the server.
+     *
      * @return
      */
     public static String unsupportedMediaType() {
@@ -53,6 +57,7 @@ public class HttpHelper {
 
     /**
      * Return success
+     *
      * @return
      */
     public static String ok() {
@@ -62,9 +67,11 @@ public class HttpHelper {
     }
 
     //Header Second Line
+
     /**
      * Method to return the second line of the header. Parameter fileExtension must be passed as string without anything but the extension itself.
      * E.g: "jpg", "html", "svg" etc.
+     *
      * @param filePath
      * @return
      */
