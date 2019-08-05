@@ -94,7 +94,6 @@ public class HttpHelper {
             case "gif":
             case "bmp":
                 type = "image";
-                System.out.println("IMAGE!!!!!!");
                 break;
             case "jpg":
             case "jpeg":
