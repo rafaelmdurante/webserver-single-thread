@@ -1,0 +1,5 @@
+// ===== SECTION #1 =====
+.hero-bg-img-index {
+    background: $index-bg-img-1x;
+    @include hero-bg-img;
+}

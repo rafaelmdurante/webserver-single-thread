@@ -1,0 +1,18 @@
+.hero-bg-img-atuacao {
+    background: $atuacao-bg-img-1x;
+    @include hero-bg-img;
+}
+
+#area-atuacao {
+    margin-bottom: 1.5rem;
+}
+
+.list-left-title {
+    background-color: $color-primary;
+    padding: 1.2rem;
+}
+
+.list-right-title {
+    background-color: $color-secondary;
+    padding: 1.2rem;
+}

@@ -1,0 +1,13 @@
+// Variables and Mixins
+@import './helpers/variables.scss';
+@import './helpers/mixins.scss';
+// Basic Layout
+@import './layout/core.scss';
+@import './layout/components.scss';
+// Pages Layouts
+@import './layout/pages/index.scss';
+@import './layout/pages/a-nutricionista.scss';
+@import './layout/pages/area-de-atuacao.scss';
+@import './layout/pages/contato.scss';
+// Media Queries
+@import './layout/media-queries.scss';
