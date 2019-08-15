@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class WebServer {
 
-    public static final int DEFAULT_PORT = 8082;
+    public static final int DEFAULT_PORT = 8080;
     public static final String DOCUMENT_ROOT = "www/";
     private ServerSocket serverSocket;
 
@@ -54,19 +54,21 @@ public class WebServer {
      */
     private void serve(ServerSocket serverSocket) {
 
+        System.out.println("Server on. Waiting for connection...");
+
         while (true) {
             try {
-                System.out.println("Waiting...");
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Connection Established.");
-                dispatch(clientSocket);
+
+                Thread clientThread = new Thread(new ClientThread(clientSocket));
+                System.out.println("Thread: " + clientThread.getName());
+                clientThread.start();
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
 
     private void dispatch(Socket clientSocket) {
 
@@ -203,6 +205,21 @@ public class WebServer {
             clientSocket.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Thread Class
+    private class ClientThread implements Runnable {
+
+        private Socket clientSocket;
+
+        public ClientThread(Socket clientSocket) {
+            this.clientSocket = clientSocket;
+        }
+
+        @Override
+        public void run() {
+            dispatch(clientSocket);
         }
     }
 
